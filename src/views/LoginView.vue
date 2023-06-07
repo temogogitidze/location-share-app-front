@@ -7,9 +7,11 @@
           <div>
             <input
               type="text"
+              v-maska
+              data-maska="+ (###) ###-##-##-##"
               name="phone"
               id="phone"
-              placeholder="1 (234) 567-8910"
+              placeholder="+ (995) 94-32-99"
               class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-black focus:outline-none"
             />
           </div>
@@ -29,4 +31,5 @@
 
 <script setup>
 import { ref } from 'vue'
+import { vMaska } from 'maska'
 </script>
