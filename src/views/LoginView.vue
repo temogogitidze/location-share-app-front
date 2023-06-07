@@ -1,7 +1,7 @@
 <template>
   <div class="pt-16">
     <h1 class="text-3xl font-semibold mb-4">Enter your phone number</h1>
-    <form action="#" @submit.prevent="handleLogin()">
+    <form action="#" @submit.prevent="userStore.handleLogin(credentials)">
       <div class="overflow-hidden shadow sm:rounded-md max-w-sm mx-auto text-left">
         <div class="bg-white px-4 py-5 sm:p-6">
           <div>
@@ -20,7 +20,7 @@
         <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
           <button
             type="submit"
-            @submit.prevent="handleLogin()"
+            @submit.prevent="userStore.handleLogin(credentials)"
             class="inline-flex justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none"
           >
             Continue
@@ -32,24 +32,15 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
 import { vMaska } from 'maska'
-import defaultInstance from '@/plugins/axios/axios'
+import { useUserStore } from '@/stores/useUserStore'
+import { reactive } from 'vue'
+
+const userStore = useUserStore()
 
 const credentials = reactive({
   phone: null
 })
 
-const handleLogin = () => {
-  defaultInstance
-    .post('/login', credentials)
-    .then((res) => {
-      console.log(res.data)
-    })
-    .catch((err) => {
-      console.log(err)
-      alert(err.response.data.message)
-    })
-  console.log(credentials.phone)
-}
+userStore
 </script>
