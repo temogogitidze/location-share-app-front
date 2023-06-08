@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { httpPostRequest } from '@/helpers/http/httpRequest'
+import { httpGetRequest } from '@/helpers/http/httpRequest'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -41,5 +42,22 @@ export const useUserStore = defineStore('user', () => {
         })
     })
   }
-  return { handleLogin, handleVerification, waitingForVerification }
+
+  const fetchUser = () => {
+    return new Promise((resolve, reject) => {
+      httpGetRequest('/user', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+        .then((res) => {
+          resolve(true)
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  }
+
+  return { handleLogin, handleVerification, fetchUser, waitingForVerification }
 })
