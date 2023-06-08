@@ -41,6 +41,4 @@ const userStore = useUserStore()
 const credentials = reactive({
   phone: null
 })
-
-userStore
 </script>
