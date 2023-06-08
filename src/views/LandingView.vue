@@ -3,7 +3,7 @@
     <h1 class="text-3xl font-semibold mb-4">Landing Page</h1>
     <div class="overflow-hidden shadow sm:rounded-md max-w-sm mx-auto">
       <div class="bg-white px-4 py-5 sm:p-6">
-        <div class="flex space-between">
+        <div class="flex justify-between">
           <button
             @click="handleStartDriving"
             class="rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none"
@@ -22,6 +22,4 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-</script>
+<script setup></script>
