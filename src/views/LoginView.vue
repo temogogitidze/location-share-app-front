@@ -43,7 +43,7 @@
               name="phone"
               id="phone"
               v-model="credentials.login_code"
-              placeholder="+ (995) 94-32-99"
+              placeholder="6 digit verification code"
               class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-black focus:outline-none"
             />
           </div>

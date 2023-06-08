@@ -13,6 +13,11 @@ const router = createRouter({
       path: '/landing',
       name: 'landing',
       component: () => import('@/views/LandingView.vue')
+    },
+    {
+      path: '/location',
+      name: 'location',
+      component: () => import('@/views/LocationView.vue')
     }
   ]
 })
