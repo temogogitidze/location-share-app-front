@@ -14,7 +14,7 @@ app.use(createPinia())
 app.use(router)
 app.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyD8OeohZHGB0Ao8r0g3DQAfxB-Ki2cGTSU',
+    key: import.meta.env.VITE_GOOGLE_MAPS_KEY,
     libraries: 'places'
   }
 })
