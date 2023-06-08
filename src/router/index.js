@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { checkTokenAuthenticity } from '@/router/guards/tokenGuard'
+import { checkTokenAuthenticity } from '@/router/guards/authGuard'
+import { check } from 'prettier'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,13 +27,14 @@ router.beforeEach((to, from) => {
     return { name: 'login' }
   }
 
-  checkTokenAuthenticity().then((res) => {
-    console.log(res)
-    if (res === false) {
+  checkTokenAuthenticity()
+    .then(() => {
+      console.log('success')
+    })
+    .catch(() => {
       localStorage.removeItem('token')
       return { name: 'login' }
-    }
-  })
+    })
 })
 
 export default router

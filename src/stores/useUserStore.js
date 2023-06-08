@@ -32,8 +32,7 @@ export const useUserStore = defineStore('user', () => {
     return new Promise(() => {
       httpPostRequest('/login/verify', formattedCredentials)
         .then((res) => {
-          console.log(res)
-          const { data } = { res }
+          const { data } = res
           localStorage.setItem('token', data)
           router.push({ name: 'landing' })
         })
@@ -42,6 +41,5 @@ export const useUserStore = defineStore('user', () => {
         })
     })
   }
-  // 5|wdwVk6P9ZZnLymvJF3rPjdIL7WlyKR03p569JdHE
   return { handleLogin, handleVerification, waitingForVerification }
 })
