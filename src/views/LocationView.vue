@@ -29,4 +29,8 @@
 
 <script setup>
 import { ref } from 'vue'
+
+const handleLocationChanged = (e) => {
+  console.log(e)
+}
 </script>
