@@ -35,13 +35,13 @@ export const useUserStore = defineStore('user', () => {
           console.log(res)
           const { data } = { res }
           localStorage.setItem('token', data)
-          router.push({ name: 'index' })
+          router.push({ name: 'landing' })
         })
         .catch((err) => {
           console.log(err)
         })
     })
   }
-  // 4|AwF7iPLFywffwpWdkg4lik0WS3QWVG6zTRe91o5b
+  // 5|wdwVk6P9ZZnLymvJF3rPjdIL7WlyKR03p569JdHE
   return { handleLogin, handleVerification, waitingForVerification }
 })

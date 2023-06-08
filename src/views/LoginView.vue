@@ -93,7 +93,7 @@ const authenticationText = computed(() => {
 
 onMounted(() => {
   if (localStorage.getItem('token')) {
-    router.push({ name: 'index' })
+    router.push({ name: 'landing' })
   }
 })
 </script>
