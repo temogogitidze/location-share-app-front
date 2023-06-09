@@ -22,7 +22,7 @@
         </div>
         <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
           <button
-            @click="handleConfirmTrip"
+            @click="handleConfirmTrip(locationStore)"
             class="inline-flex justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none"
           >
             Let's Go!
@@ -36,12 +36,15 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useLocationStore } from '@/stores/location'
+import { useLocation } from '@/composables/location'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const locationStore = useLocationStore()
 
 const gMap = ref(null)
+
+const { handleConfirmTrip, trip } = useLocation()
 
 onMounted(async () => {
   if (locationStore.destination.name === '') router.push({ name: 'location' })
