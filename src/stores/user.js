@@ -45,11 +45,7 @@ export const useUserStore = defineStore('user', () => {
 
   const fetchUser = () => {
     return new Promise((resolve, reject) => {
-      httpGetRequest('/user', {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      })
+      httpGetRequest('/user')
         .then((res) => {
           resolve(true)
         })
