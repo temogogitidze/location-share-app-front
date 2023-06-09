@@ -35,7 +35,6 @@ const router = useRouter()
 const locationStore = useLocationStore()
 
 const handleLocationChanged = (e) => {
-  console.log(e)
   locationStore.$patch({
     destination: {
       name: e.name,
