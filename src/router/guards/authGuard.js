@@ -1,4 +1,4 @@
-import { useUserStore } from '@/stores/useUserStore'
+import { useUserStore } from '@/stores/user.js'
 
 export const checkTokenAuthenticity = () => {
   const { fetchUser } = useUserStore()

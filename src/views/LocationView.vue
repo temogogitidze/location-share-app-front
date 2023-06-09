@@ -15,7 +15,7 @@
         </div>
         <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
           <button
-            @click.prevent="handleSelectLocation"
+            @click.prevent="handleSelectLocation()"
             type="button"
             class="inline-flex justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none"
           >
@@ -29,8 +29,21 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useLocationStore } from '@/stores/location'
+
+const locationStore = useLocationStore()
 
 const handleLocationChanged = (e) => {
   console.log(e)
+  locationStore.$patch({
+    destination: {
+      name: e.name,
+      address: e.formatted_address,
+      geometry: {
+        lat: e.geometry.location.lat(),
+        lng: e.geometry.location.lng()
+      }
+    }
+  })
 }
 </script>
