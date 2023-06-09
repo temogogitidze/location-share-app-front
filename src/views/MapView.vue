@@ -34,17 +34,45 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useLocationStore } from '@/stores/location'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const locationStore = useLocationStore()
 
-onMounted(() => {
+const gMap = ref(null)
+
+onMounted(async () => {
   if (locationStore.destination.name === '') router.push({ name: 'location' })
 
   // Get user's current location
-  locationStore.updateCurrentLocation()
+  await locationStore.updateCurrentLocation()
+
+  gMap.value.$mapPromise.then((mapObject) => {
+    let currentPoint = new google.maps.LatLng(locationStore.current.geometry),
+      destinationPoint = new google.maps.LatLng(locationStore.destination.geometry),
+      directionsService = new google.maps.DirectionsService(),
+      directionsDisplay = new google.maps.DirectionsRenderer({
+        map: mapObject
+      })
+
+    directionsService.route(
+      {
+        origin: currentPoint,
+        destination: destinationPoint,
+        avoidTolls: false,
+        avoidHighways: false,
+        travelMode: google.maps.TravelMode.DRIVING
+      },
+      (res, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(res)
+        } else {
+          console.error(status)
+        }
+      }
+    )
+  })
 })
 </script>
