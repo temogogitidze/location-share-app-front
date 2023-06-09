@@ -28,9 +28,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useLocationStore } from '@/stores/location'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const locationStore = useLocationStore()
 
 const handleLocationChanged = (e) => {
@@ -45,5 +46,9 @@ const handleLocationChanged = (e) => {
       }
     }
   })
+}
+
+const handleSelectLocation = () => {
+  if (locationStore.destination.name !== '') router.push({ name: 'map' })
 }
 </script>
