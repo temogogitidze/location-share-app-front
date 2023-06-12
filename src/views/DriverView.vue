@@ -98,8 +98,10 @@ const driverDetails = reactive({
 })
 
 const handleSaveDriver = async () => {
-  if (await saveDriver()) {
-    router.push({ name: 'landing' })
+  const succesfullySaved = await saveDriver(driverDetails)
+  console.log(succesfullySaved)
+  if (succesfullySaved) {
+    router.push({ name: 'standby' })
   }
 }
 </script>

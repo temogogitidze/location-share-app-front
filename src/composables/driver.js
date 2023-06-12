@@ -16,6 +16,7 @@ export const useDriver = () => {
     try {
       const response = await httpPostRequest('/driver', driverDetails)
       console.log(response)
+      return response.status === 200
     } catch (error) {
       console.log(error)
       return error.response.status === 200
