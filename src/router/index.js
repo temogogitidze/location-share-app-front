@@ -28,6 +28,16 @@ const router = createRouter({
       path: '/trip',
       name: 'trip',
       component: () => import('@/views/TripView.vue')
+    },
+    {
+      path: '/driver',
+      name: 'driver',
+      component: () => import('@/views/DriverView.vue')
+    },
+    {
+      path: '/standby',
+      name: 'standby',
+      component: () => import('@/views/StandbyView.vue')
     }
   ]
 })

@@ -5,7 +5,6 @@ export const useDriver = () => {
     try {
       const response = await httpGetRequest('/driver')
       console.log(response)
-
       return !!response.data.driver
     } catch (error) {
       console.log(error)
