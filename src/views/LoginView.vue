@@ -64,7 +64,7 @@
 
 <script setup>
 import { vMaska } from 'maska'
-import { useUserStore } from '@/stores/useUserStore'
+import { useUserStore } from '@/stores/user'
 import { reactive, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
