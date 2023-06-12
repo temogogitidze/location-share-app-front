@@ -1,4 +1,5 @@
 import { httpGetRequest } from '@/helpers/http/httpRequest'
+import { httpPostRequest } from '@/helpers/http/httpRequest'
 
 export const useDriver = () => {
   const startDriving = async () => {
@@ -11,5 +12,15 @@ export const useDriver = () => {
     }
   }
 
-  return { startDriving }
+  const saveDriver = async (driverDetails) => {
+    try {
+      const response = await httpPostRequest('/driver', driverDetails)
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+      return error.response.status === 200
+    }
+  }
+
+  return { startDriving, saveDriver }
 }

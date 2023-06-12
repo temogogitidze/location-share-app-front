@@ -81,6 +81,12 @@
 
 <script setup>
 import { reactive } from 'vue'
+import { useDriver } from '@/composables/driver'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const { saveDriver } = useDriver()
 
 const driverDetails = reactive({
   name: '',
@@ -90,5 +96,10 @@ const driverDetails = reactive({
   color: '',
   license_plate: ''
 })
-const handleSaveDriver = () => {}
+
+const handleSaveDriver = async () => {
+  if (await saveDriver()) {
+    router.push({ name: 'landing' })
+  }
+}
 </script>
