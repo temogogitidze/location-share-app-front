@@ -38,6 +38,11 @@ const router = createRouter({
       path: '/standby',
       name: 'standby',
       component: () => import('@/views/StandbyView.vue')
+    },
+    {
+      path: '/driving',
+      name: 'driving',
+      component: () => import('@/views/DrivingView.vue')
     }
   ]
 })
@@ -54,7 +59,7 @@ router.beforeEach((to, from) => {
   checkTokenAuthenticity()
     .then(() => {})
     .catch(() => {
-      localStorage.removeItem('token')
+      // localStorage.removeItem('token')
       return { name: 'login' }
     })
 })
