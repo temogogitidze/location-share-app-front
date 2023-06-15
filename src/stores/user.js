@@ -35,6 +35,7 @@ export const useUserStore = defineStore('user', () => {
         .then((res) => {
           const { data } = res
           localStorage.setItem('token', data)
+          console.log(data)
           router.push({ name: 'landing' })
         })
         .catch((err) => {

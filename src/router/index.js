@@ -54,7 +54,7 @@ router.beforeEach((to, from) => {
   checkTokenAuthenticity()
     .then(() => {})
     .catch(() => {
-      localStorage.removeItem('token')
+      // localStorage.removeItem('token')
       return { name: 'login' }
     })
 })

@@ -54,9 +54,15 @@ const tripStore = useTripStore()
 
 const title = ref('Waiting for ride request...')
 
-const handleAcceptTrip = () => {}
+const handleAcceptTrip = () => {
+  
+}
 
-const handleDeclineTrip = () => {}
+const handleDeclineTrip = () => {
+  tripStore.reset()
+
+  title.value = 'Waiting for ride request...'
+}
 
 onMounted(() => {
   let echo = new Echo({
@@ -76,7 +82,8 @@ onMounted(() => {
 
     tripStore.$patch(e.trip)
     console.log('TripCreated', e)
-    initMapDirections()
+
+    setTimeout(initMapDirections, 2000)
   })
 })
 
