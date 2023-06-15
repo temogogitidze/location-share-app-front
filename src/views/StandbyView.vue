@@ -41,13 +41,10 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import LoaderItem from '@/components/LoaderItem.vue'
 import Echo from 'laravel-echo'
 import { useTripStore } from '@/stores/trip'
 import Pusher from 'pusher-js'
-
-const router = useRouter()
 
 const gMap = ref(null)
 const tripStore = useTripStore()
@@ -55,7 +52,7 @@ const tripStore = useTripStore()
 const title = ref('Waiting for ride request...')
 
 const handleAcceptTrip = () => {
-  
+  tripStore.acceptTrip(tripStore.id)
 }
 
 const handleDeclineTrip = () => {
