@@ -64,7 +64,7 @@ export const useTripStore = defineStore('trip', () => {
       location.$patch({
         destination: {
           name: 'Passenger',
-          geometry: response.data.origin
+          geometry: response.data.data.origin
         }
       })
 

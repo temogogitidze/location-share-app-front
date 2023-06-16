@@ -57,7 +57,7 @@ const handleAcceptTrip = () => {
 
 const handleDeclineTrip = () => {
   tripStore.reset()
-
+  
   title.value = 'Waiting for ride request...'
 }
 
