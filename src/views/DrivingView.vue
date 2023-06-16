@@ -41,7 +41,7 @@
       </div>
       <div class="overflow-hidden shadow sm:rounded-md max-w-sm mx-auto text-left" v-else>
         <div class="bg-white px-4 py-5 sm:p-6">
-          <Tada />
+          <TaDa />
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@ import { useLocationStore } from '@/stores/location'
 import { useTripStore } from '@/stores/trip'
 import { useRouter } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
-import Tada from '@/components/Tada.vue'
+import TaDa from '@/components/TaDa.vue'
 import { httpPostRequest } from '@/helpers/http/httpRequest'
 
 const location = useLocationStore()
@@ -92,7 +92,7 @@ const updateMapBounds = (mapObject) => {
 }
 
 const broadcastDriverLocation = () => {
-  httpPostRequest(`/api/trip/${trip.id}/location`, {
+  httpPostRequest(`/trip/${trip.id}/location`, {
     driver_location: location.current.geometry
   })
     .then((response) => {})
@@ -102,7 +102,7 @@ const broadcastDriverLocation = () => {
 }
 
 const handlePassengerPickedUp = () => {
-  httpPostRequest(`/api/trip/${trip.id}/start`)
+  httpPostRequest(`/trip/${trip.id}/start`)
     .then((response) => {
       title.value = 'Travelling to destination...'
       location.$patch({
@@ -119,7 +119,7 @@ const handlePassengerPickedUp = () => {
 }
 
 const handleCompleteTrip = () => {
-  httpPostRequest(`/api/trip/${trip.id}/end`)
+  httpPostRequest(`/trip/${trip.id}/end`)
     .then((response) => {
       title.value = 'Trip completed!'
 
