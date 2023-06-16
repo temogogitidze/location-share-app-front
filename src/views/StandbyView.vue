@@ -57,7 +57,7 @@ const handleAcceptTrip = () => {
 
 const handleDeclineTrip = () => {
   tripStore.reset()
-  
+
   title.value = 'Waiting for ride request...'
 }
 
@@ -78,8 +78,7 @@ onMounted(() => {
     title.value = 'Ride requested:'
 
     tripStore.$patch(e.trip)
-    console.log('TripCreated', e)
-
+    console.log(tripStore.user_id)
     setTimeout(initMapDirections, 2000)
   })
 })

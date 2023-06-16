@@ -94,7 +94,7 @@ const updateMapBounds = (mapObject) => {
 const broadcastDriverLocation = () => {
   httpPostRequest(`/trip/${trip.id}/location`, {
     driver_location: location.current.geometry
-  })  
+  })
     .then((response) => {})
     .catch((error) => {
       console.error(error)

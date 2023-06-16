@@ -35,6 +35,8 @@ const location = useLocationStore()
 const trip = useTripStore()
 const router = useRouter()
 
+console.log(trip.user_id)
+
 const title = ref('Waiting on a driver...')
 const message = ref('When a driver accepts the trip, their info will appear here.')
 
